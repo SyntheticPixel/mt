@@ -60,11 +60,11 @@ __global__ void KERNEL_RENDER(PixelBuffer *buffer, int w, int h){
 
 	if (threadId >= w * h) return;
 
-	// Make a red pixel
+	// render
 	render(&buffer[threadId]);
 }
 
-unsigned char FloatToShort(float f){
+unsigned char floatToShort(float f){
 	return (unsigned char)(f*255.0f);
 }
 
@@ -95,9 +95,9 @@ void saveBuffer(PixelBuffer* data, unsigned int w, unsigned int h, std::string f
 
 		glm::vec3 t = a.getAverage();
 
-		r = FloatToShort(t.x);
-		g = FloatToShort(t.y);
-		b = FloatToShort(t.z);
+		r = floatToShort(t.x);
+		g = floatToShort(t.y);
+		b = floatToShort(t.z);
 		outputFile << r << g << b;
 	}
 
